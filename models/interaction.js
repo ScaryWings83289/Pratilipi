@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const InteractionSchema = new Schema({
@@ -12,8 +12,12 @@ const InteractionSchema = new Schema({
   },
   likedBooks: {
     type: Array,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
   }
 });
 
-const User = mongoose.model('Interaction_Service', InteractionSchema);
+const User = mongoose.model("Interaction_Service", InteractionSchema);
 module.exports = User;

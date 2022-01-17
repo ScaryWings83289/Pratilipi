@@ -14,7 +14,7 @@ const { contentValidator, dateFormatter } = require("../middlewares/content");
 const { isAuthenticated } = require("../middlewares/user");
 
 // Saving CSV Data to Database
-router.post('/data', upload.any(), async (req, res) => {
+router.post('/postData', upload.any(), async (req, res) => {
   try {
     if (req.files[0] === undefined) {
       return res.json({
@@ -52,7 +52,7 @@ router.post('/data', upload.any(), async (req, res) => {
 })
 
 // Create a Content
-router.post("/create", isAuthenticated, async (req, res) => {
+router.post("/createContent", isAuthenticated, async (req, res) => {
   try {
     const { title, story } = req.body;
 
@@ -94,7 +94,7 @@ router.post("/create", isAuthenticated, async (req, res) => {
 });
 
 // Read a Particular Content
-router.get("/read/:id", isAuthenticated, async (req, res) => {
+router.get("/readContent/:id", isAuthenticated, async (req, res) => {
   try {
     const content = await Content.findById(req.params.id);
     if (!content) {
@@ -119,7 +119,7 @@ router.get("/read/:id", isAuthenticated, async (req, res) => {
 });
 
 // Update a particular Content
-router.put("/update", isAuthenticated, async (req, res) => {
+router.put("/updateContent", isAuthenticated, async (req, res) => {
   try {
     const { title, story } = req.body;
 
@@ -155,7 +155,7 @@ router.put("/update", isAuthenticated, async (req, res) => {
 });
 
 // Delete a particular Content
-router.delete('/delete', isAuthenticated, async (req, res) => {
+router.delete('/removeContent', isAuthenticated, async (req, res) => {
   try {
     const content = await Content.findOne({ userId: req.session.userId });
     if (!content) {

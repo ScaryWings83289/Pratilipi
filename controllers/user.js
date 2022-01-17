@@ -9,7 +9,7 @@ const User = require("../models/user");
 const { isAuthenticated, validator } = require("../middlewares/user");
 
 // Signup Route
-router.post("/signup", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber } = req.body;
 
@@ -52,7 +52,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // Login a User
-router.post("/signin", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, phoneNumber } = req.body;
     if (email === "" || phoneNumber === "") {
@@ -110,7 +110,7 @@ router.get("/logout", isAuthenticated, (req, res) => {
 });
 
 // Read a User's data
-router.get("/read", isAuthenticated, async (req, res) => {
+router.get("/getUser", isAuthenticated, async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
     if (!user) {
@@ -137,7 +137,7 @@ router.get("/read", isAuthenticated, async (req, res) => {
 });
 
 // Update a particular User's data
-router.put("/update", isAuthenticated, async (req, res) => {
+router.put("/updateUser", isAuthenticated, async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber } = req.body;
 
@@ -174,7 +174,7 @@ router.put("/update", isAuthenticated, async (req, res) => {
   }
 });
 
-router.delete('/delete', isAuthenticated, async (req, res) => {
+router.delete('/deleteUser', isAuthenticated, async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
     if (!user) {

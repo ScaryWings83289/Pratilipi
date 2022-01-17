@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Middleware
@@ -34,5 +34,5 @@ const ContentSchema = new Schema({
   }
 });
 
-const User = mongoose.model('Content_Service', ContentSchema);
+const User = mongoose.model("Content_Service", ContentSchema);
 module.exports = User;

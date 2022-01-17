@@ -12,7 +12,7 @@ const ContentRouter = require("./controllers/content");
 const InteractionRouter = require("./controllers/interaction");
 
 // MongoDB Configuration
-const mongo_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/pratilipi_users";
+const mongo_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/pratilipi";
 mongoose
   .connect(mongo_URI, {
     useNewUrlParser: true,
@@ -54,9 +54,9 @@ app.use(cors(corsOptions));
 
 // Body Parser
 app.use(express.json());
-app.use("/user", UserRouter);
-app.use("/content", ContentRouter);
-app.use("/interaction", InteractionRouter);
+app.use("/api/v1/user", UserRouter);
+app.use("/api/v1/content", ContentRouter);
+app.use("/api/v1/interaction", InteractionRouter);
 
 // Port Configuration
 const port = process.env.PORT || 4000;

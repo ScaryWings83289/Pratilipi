@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 // User Read Books
-router.get("/read/:id", isAuthenticated, async (req, res) => {
+router.get("/readBooks/:id", isAuthenticated, async (req, res) => {
   try {
     const content = await Content.findById(req.params.id);
     if (!content) {
@@ -56,7 +56,7 @@ router.get("/read/:id", isAuthenticated, async (req, res) => {
 });
 
 // User Liked Books
-router.put("/like/:id", isAuthenticated, async (req, res) => {
+router.put("/likedBooks/:id", isAuthenticated, async (req, res) => {
   try {
     const content = await Content.findById(req.params.id);
     content.likes += 1;

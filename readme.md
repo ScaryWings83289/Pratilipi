@@ -21,8 +21,11 @@ Clone the repository and do following:
 # Install dependencies for server
 npm install
 
+# Run the Mongod Server
+mongod --dbpath=<your-database-directory>
+
 # Run the Express server
 npm start or nodemon app.js
 
-# Server runs on http://localhost:3000
+# Server runs on http://localhost:4000
 ```
